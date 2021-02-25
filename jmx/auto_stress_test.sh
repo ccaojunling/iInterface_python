@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # 压测脚本模板中设定的压测时间应为20秒
 export jmx_template="iInterface"
@@ -33,12 +33,13 @@ do
     fi
 
     # JMeter 静默压测
-    echo ${JMETER_PATH}
-    ${JMETER_PATH}/bin/jmeter -n -t ${jmx_filename} -l ${jtl_filename}
-#    jmeter -n -t ${jmx_filename} -l ${jtl_filename}
+    echo "-------------------"
+    echo "${JMETER_PATH}"
+#    ${JMETER_PATH}/bin/jmeter -n -t ${jmx_filename} -l ${jtl_filename}
+    jmeter -n -t ${jmx_filename} -l ${jtl_filename}
     # 生成Web压测报告
-     ${JMETER_PATH}/bin/jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
-#    jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
+#     ${JMETER_PATH}/bin/jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
+    jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
 #    /home/sll/Downloads/apache-jmeter-5.4.1/bin/jmeter -g ${jtl_filename} -e -o ${web_report_path_name}
 
 
